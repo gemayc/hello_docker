@@ -343,7 +343,7 @@ Si has llegado hasta aquí, ya sabes cómo dockerizar una aplicación Python. Es
 
 <div align="center">
 
-**Hecho con ❤️ para aprender Docker**
+**Proyecto realizado por Gema Yébenes con ❤️ para aprender Docker**
 
 ![Docker Logo](https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png)
 
