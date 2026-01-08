@@ -299,22 +299,22 @@ Cualquier persona puede ejecutar tu aplicación de estas formas:
 
 **Usando la versión específica:**
 ```bash
-docker run -p 8501:8501 TU_USUARIO/hello_docker:v1.0
+docker run -p 8501:8501 -v datos_app:/app/data TU_USUARIO/hello_docker:v1.0
 ```
 
 **Usando la última versión (latest):**
 ```bash
-docker run -p 8501:8501 TU_USUARIO/hello_docker:latest
+docker run -p 8501:8501 -v datos_app:/app/data TU_USUARIO/hello_docker:latest
 ```
 
 **Sin especificar versión (descarga `latest` por defecto):**
 ```bash
-docker run -p 8501:8501 TU_USUARIO/hello_docker
+docker run -p 8501:8501 -v datos_app:/app/data TU_USUARIO/hello_docker
 ```
 
 **Ejemplo:**
 ```bash
-docker run -p 8501:8501 gema/hello_docker:v1.0
+docker run -p 8501:8501 -v datos_app:/app/data gema/hello_docker:v1.0
 ```
 
 Docker descargará automáticamente la imagen desde Docker Hub y la ejecutará.
@@ -358,7 +358,7 @@ docker run -d -p 8501:8501 hello_docker
    ↓
 2. docker build -t hello_docker .
    ↓
-3. docker run -p 8501:8501 hello_docker
+3. docker run -p 8501:8501 -v datos_app:/app/data hello_docker
    ↓
 4. docker login
    ↓
@@ -369,9 +369,9 @@ docker run -d -p 8501:8501 hello_docker
    docker push TU_USUARIO/hello_docker:latest
    ↓
 7. Cualquiera puede ejecutar: 
-   docker run -p 8501:8501 TU_USUARIO/hello_docker:v1.0
+   docker run -p 8501:8501 -v datos_app:/app/data TU_USUARIO/hello_docker:v1.0
    o
-   docker run -p 8501:8501 TU_USUARIO/hello_docker
+   docker run -p 8501:8501 -v datos_app:/app/data TU_USUARIO/hello_docker
 ```
 
 ---
