@@ -143,6 +143,95 @@ docker run -p 8501:8501 hello_docker
 
 ---
 
+
+## 💾 PARTE 2.5: Persistencia de datos con volúmenes (MUY IMPORTANTE)
+
+Nuestra aplicación guarda los nombres introducidos por el usuario en un archivo:
+```
+data/nombres.txt
+```
+
+Este archivo **se crea automáticamente** cuando ejecutas la app por primera vez.
+
+---
+
+### ❌ Ejecutar el contenedor SIN volumen (los datos se pierden)
+
+Ejecuta el contenedor de forma normal:
+```bash
+docker run -p 8501:8501 hello_docker
+```
+
+1. Escribe varios nombres en la aplicación
+2. Verás que aparecen en la tabla
+3. Detén y elimina el contenedor:
+```bash
+docker ps
+docker rm -f 
+```
+
+4. Vuelve a ejecutar el contenedor:
+```bash
+docker run -p 8501:8501 hello_docker
+```
+
+**❌ Resultado:** Los nombres se han perdido.
+
+**🧠 ¿Por qué?** Los datos estaban dentro del contenedor, y los contenedores son temporales.
+
+---
+
+### ✅ Ejecutar el contenedor CON volumen (los datos se conservan)
+
+Ahora ejecuta el contenedor usando un volumen Docker:
+```bash
+docker run -p 8501:8501 -v datos_app:/app/data hello_docker
+```
+
+#### ¿Qué hace este comando?
+
+- `-v datos_app:/app/data` → Crea un volumen llamado `datos_app` y lo monta en `/app/data` del contenedor
+
+**Prueba:**
+
+1. Escribe varios nombres en la aplicación
+2. Verás que aparecen en la tabla
+3. Detén y elimina el contenedor:
+```bash
+docker ps
+docker rm -f 
+```
+
+4. Vuelve a ejecutar el contenedor **con el mismo comando**:
+```bash
+docker run -p 8501:8501 -v datos_app:/app/data hello_docker
+```
+
+**✅ Resultado:** Los nombres siguen apareciendo.
+
+**🧠 Explicación:** El volumen `datos_app` guarda los datos **fuera del contenedor**, por eso no se pierden.
+
+---
+
+### 🛠️ Comandos útiles para volúmenes
+```bash
+# Ver todos los volúmenes
+docker volume ls
+
+# Ver detalles de un volumen específico
+docker volume inspect datos_app
+
+# Eliminar un volumen (CUIDADO: borra todos los datos)
+docker volume rm datos_app
+
+# Eliminar todos los volúmenes no usados
+docker volume prune
+```
+
+> 💡 **Importante:** Si eliminas el volumen con `docker volume rm datos_app`, perderás todos los datos guardados.
+
+---
+
 ## 🌍 PARTE 3: Subir tu imagen a Docker Hub
 
 Para compartir tu imagen con otros o ejecutarla en cualquier máquina, necesitas subirla a Docker Hub.

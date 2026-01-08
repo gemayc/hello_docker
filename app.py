@@ -1,5 +1,16 @@
 import streamlit as st
 import random
+import os
+import pandas as pd
+
+
+# 📁 Carpeta y archivo donde se guardarán los nombres
+DATA_DIR = "data"
+DATA_FILE = os.path.join(DATA_DIR, "nombres.txt")
+
+# Crear la carpeta si no existe
+os.makedirs(DATA_DIR, exist_ok=True)
+
 
 # 🎨 Configuración de la página
 st.set_page_config(
@@ -263,8 +274,33 @@ if st.button("🚀 ¡Saludar!"):
         ]
         st.success(random.choice(greetings))
         st.balloons()
+        
+                # 💾 Guardar el nombre en el archivo
+        with open(DATA_FILE, "a", encoding="utf-8") as f:
+            f.write(name + "\n")
+
     else:
         st.warning("⚠️ No olvides escribir tu nombre")
+
+# 📋 Mostrar nombres guardados en tabla
+
+if os.path.exists(DATA_FILE):
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        names = f.read().splitlines()
+
+    if names:
+        df = pd.DataFrame(
+            {
+                "👤 Nombre": names
+            }
+        )
+
+        st.table(df)
+    else:
+        st.info("Aún no hay nombres guardados.")
+else:
+    st.info("Aún no hay datos guardados.")
+
 
 st.markdown("</div>", unsafe_allow_html=True)
 
