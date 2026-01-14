@@ -59,6 +59,7 @@ git checkout docker_solution
 ```
 
 ## 📁 Estructura del proyecto
+```
 hello_docker/
 │
 ├── app.py              # Aplicación Streamlit
@@ -66,7 +67,6 @@ hello_docker/
 ├── Dockerfile          # Instrucciones para Docker
 └── README.md          # Este archivo
 ```
-
 ---
 
 ## 🚀 PARTE 1: Ejecutar la aplicación en local
