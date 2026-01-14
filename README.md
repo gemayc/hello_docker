@@ -20,10 +20,45 @@ Con este proyecto aprenderás a:
 - ✅ Subir tu imagen a Docker Hub
 - ✅ Ejecutar la app desde Docker Hub
 
+
 ---
 
-## 📁 Estructura del proyecto
+## 🌿 Ramas del repositorio
+
+Este repositorio contiene **dos ramas** con objetivos distintos:
+
+### 🔹 Rama `main` (ejercicio para realizarlo)
+- Es la rama que deben clonar para realizar el ejercicio
+- Contiene la aplicación en Python + Streamlit
+- Presentación Docker en PDF
+- **NO incluye Dockerfile**
+- El objetivo es que el alumno:
+  - cree su propio Dockerfile
+  - construya la imagen Docker
+  - ejecute el contenedor
+  - trabaje con volúmenes
+  - suba su imagen a Docker Hub
+
+👉 **Esta es la rama que se debe usar para realizar el ejercicio.**
+
+---
+
+### 🔹 Rama `docker_solution` (solución completa)
+- Contiene el proyecto **completamente terminado**
+- Incluye:
+  - Dockerfile
+  - proyecto listo para ejecutarse
+  - **guía de instalación de Docker Desktop**
+- Pensada como referencia o solución final
+
+👉 Para acceder a esta rama:
+
+```bash
+git checkout docker_solution
+
 ```
+
+## 📁 Estructura del proyecto
 hello_docker/
 │
 ├── app.py              # Aplicación Streamlit
